@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player</title>
+    <link rel="stylesheet" href="player.css">
+    <script defer src="player.js"></script>
+    
+</head>
+
+<body onload="playMusic()">
+    <div class="container">
+        <div class="header"></div>
+              <div class="forborder" >
+                  <img src=" " alt="" width="150px" id="poster-shadow">
+              </div>
+      <p class="title">
+        <marquee scrolldelay="300"> </marquee>
+      </p> 
+
+        <div class="controls">
+
+          <!-- <div class="seeker">
+            <div class="fill-bar"></div>
+     
+            <div class="thumb"></div>
+          </div> -->
+
+          <input id="seeker" type="range" min="0" max="100" value="0" step="1">
+        
+          
+            <button class="play-list-btn"><img src="icons/play-list.png" width="20px"></button>
+            <button class="shuffle"><img src="icons/shuffle.png" width="25px"></button>
+            <button class="decorate previous"><img src="icons/previous.png" alt="" width="25px"></button>
+            <button class="big "><img src="icons/pause.png" id="toggle" alt="" width="35px"></button>
+            <button class="decorate next"><img src="icons/next.png" alt="" width="25px"></button>
+            <button class="loop"><img src="icons/loop.png" alt="" width="25px"></button>
+            <button class="volume-btn"><img src="icons/volume.png" width="20px" id="volume"></button>
+
+            <div class="vol-container"></div>
+              <div id="range-number"></div>
+              <input type="range" min="0" max="100" value="100" step="1" id="slider">
+            </div>
+
+            
+      </div>
+
+    
+    </div>
+  
+    
+  </div>
+
+  <ul id="playlist" class="">
+    
+  </ul>
+
+
+
+</body>
+    
+
+</html>
