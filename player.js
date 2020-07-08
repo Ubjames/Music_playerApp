@@ -3,14 +3,16 @@ const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".previous");
 const playAndPauseBtnToggle = document.querySelector("#toggle");
 const togglePoster = document.querySelector("#poster-shadow");
-const playList = document.querySelector("ul");
+let playList = document.querySelector("#playlist");
 const songMenu = document.querySelector(".song-menu");
 const shuffleBtn = document.querySelector(".shuffle");
 const loopBtn = document.querySelector(".loop");
+/*
 const playListBtn = document.querySelector(".play-list-btn");
+*/
 const volumeSlider = document.getElementById("slider");
 const volumeBtn = document.querySelector(".volume-btn");
-// const playList = document.getElementById('playlist');
+//let playList = document.getElementById('playlist');
 
 //variables
 let filler = document.querySelector(".fill-bar");
@@ -54,25 +56,34 @@ const songs = [
 	},
 
 ]
-	
+	/*
  function playMusic(){
 	song.src = songs[currentSong].src;
 	songtitle.innerHTML = songs[currentSong].name;
 	playingIndicator()
 	song.play();
 }
+*/
+
+function playTheSong(mysong){
+   if(typeof mysong.src !== undefined){
+     song.src = mysong.src;
+     song.play();
+   }
+ }
+ 
 
 //listeners
 playBtn.addEventListener('click', playBtnfun);
 nextBtn.addEventListener('click', nextBtnfun);
 previousBtn.addEventListener('click', preBtnfun);
-loopBtn.addEventListener('click', () => loopBtn.classList.toggle("active"));
+//loopBtn.addEventListener('click', () => loopBtn.classList.toggle("active"));
 shuffleBtn.addEventListener("click", () => shuffleBtn.classList.toggle("active"));
-playListBtn.addEventListener("click", () => playList.classList.toggle("active"));
-volumeBtn.addEventListener("click", () => volumeSlider.style.visibility="visible");
-volumeSlider.addEventListener('mousemove', setvolume);
-volumeSlider.addEventListener('mouseleave', (e) => volumeSlider.style.visibility="hidden");
-song.addEventListener("timeupdate", setSongProgress);
+//playListBtn.addEventListener("click", () => playList.classList.toggle("active"));
+//volumeBtn.addEventListener("click", () => volumeSlider.style.visibility="visible");
+//volumeSlider.addEventListener('mousemove', setvolume);
+//volumeSlider.addEventListener('mouseleave', (e) => volumeSlider.style.visibility="hidden");
+//song.addEventListener("timeupdate", setSongProgress);
 // playListBtn.addEventListener("click",addPlayList);
 
 addPlayList();
@@ -87,6 +98,7 @@ function playBtnfun(){
 			playAndPauseBtnToggle.getAttribute('src');
 			playAndPauseBtnToggle.setAttribute("src","icons/pause.png");
       		playingIndicator();
+      song.src = songs[currentSong].src;
 			song.play();
 		
 		
@@ -102,12 +114,13 @@ function playBtnfun(){
 	// 	song.src = songs[Math.floor(Math.random() * songs.length)].src;
 	// 	song.play();
 	//   }
-
+/*
 function loopBtnFun(){
 loopBtn.getAttribute("class");
 loopBtn.setAttribute("class", "active-now shuffle");
 	
 }
+*/
 
 	  function inactive(){
 		loopBtn.getAttribute("class");
@@ -147,6 +160,8 @@ function noIndicator(){
 	playBtn.setAttribute("class", "big ");
 
 }
+/*
+
 function setvolume() {
 	let volume = document.getElementById('volume')
 	song.volume = volumeSlider.value / 100;
@@ -165,6 +180,7 @@ function setvolume() {
   }
 
 
+/*
 function setSongProgress(){
 	let progress = song.currentTime / song.duration;
 	if(progress >0){
@@ -180,6 +196,7 @@ let seeking = false;
  seekSlider.addEventListener("mouseup", ()=> seeking = false);
 
   function seek(event) {
+    seeking = true;
 	if (seeking) {
 		seekSlider.value = event.clientX - seekSlider.offsetLeft;
 		seekTo = song.duration * (seekSlider.value / 100);
@@ -187,14 +204,18 @@ let seeking = false;
 	} 
 	song.play();
   }
-
+*/
 function addPlayList() {
-	for (let i = 0; i < songs.length; i++) {
-	  let item = document.createElement("li");
-	  item.innerHTML = songs[i].name;
-	  playList.appendChild(item);
-	}
+    songs.forEach((song, index) => {
+    let myli = document.createElement("li");
+    myli.innerHTML = song.name;
+    playList.appendChild(myli) ;
+    
+    myli.addEventListener("click", (e) => {
+      console.log(song);
+      console.log(e);
+      playTheSong(song);
+    }
+  );
+});
 }
-playList.onclick = (event)=>{
-	console.log(event) //why is this not working??
-};
