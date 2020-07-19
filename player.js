@@ -1,15 +1,15 @@
 const playBtn = document.querySelector(".big");
 const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".previous");
-const playAndPauseBtnToggle = document.querySelector("#toggle");
-const togglePoster = document.querySelector("#poster-shadow");
-const playList = document.querySelector("ul");
+// const playAndPauseBtnToggle = document.querySelector("#toggle");
+const playList = document.querySelector("#playlist");
 const songMenu = document.querySelector(".song-menu");
 const shuffleBtn = document.querySelector(".shuffle");
 const loopBtn = document.querySelector(".loop");
 const playListBtn = document.querySelector(".play-list-btn");
 const volumeSlider = document.getElementById("slider");
 const volumeBtn = document.querySelector(".volume-btn");
+const seekSlider = document.getElementById('seeker');
 // const playList = document.getElementById('playlist');
 
 //variables
@@ -18,8 +18,6 @@ let thumb = document.querySelector(".thumb");
 let songtitle = document.querySelector("marquee");
 let song = new Audio();
 let currentSong = 0;
-
-// const songs = ["beStill.mp3","Mercy Chinwo - Akamdinelu.mp3", "Chris Morgan ft Mercy ChinwoAMANAMO.mp3", "idi-mma by Emoss.mp3", "Imenem  by Mercy Chinwo.mp3",]
 
 const songs = [
 	{
@@ -52,67 +50,83 @@ const songs = [
 		artist:"Chioma Jesus Ft. Mercy Chinwo",
 		src:"songs/Chioma Jesus Ft. Mercy Chinwo - OKEMMUO.mp3"
 	},
-
-]
+	{
+		name:"No Other Name",
+		artist:"Frank-Edwards",
+		src:"songs/Frank-Edwards- No Other Name.mp3"
+	},
+	{
+		name:"You No Dey Use Me Play",
+		artist:"Ema",
+		src:"songs/Ema - You No Dey Use Me Play.mp3"
+	},
+	{
+		name:"Believers Anthem, Holy",
+		artist:"Frank-Edwards",
+		src:"songs/Frank_Edwards_-_Believers_Anthem_Holy.mp3"
+	},
+	{
+		name:"I Am",
+		artist:"Mercy Chiwno",
+		src:"songs/Mercy-Chinwo-I-Am.mp3"
+	},
+	{
+		name:"I Wont Go Back",
+		artist:"William-McDowell",
+		src:"songs/William-McDowell-I-Wont-Go-Back.mp3"
+	},
+];
 	
  function playMusic(){
 	song.src = songs[currentSong].src;
 	songtitle.innerHTML = songs[currentSong].name;
 	playingIndicator()
-	song.play();
+	song.play();//playMusic();
 }
 
 //listeners
 playBtn.addEventListener('click', playBtnfun);
 nextBtn.addEventListener('click', nextBtnfun);
 previousBtn.addEventListener('click', preBtnfun);
-loopBtn.addEventListener('click', () => loopBtn.classList.toggle("active"));
+loopBtn.addEventListener('click', () => {loopBtn.classList.toggle("active")
+if(loopBtn.classNameContains = 'active'){
+		song.loop = true;
+}
+});
 shuffleBtn.addEventListener("click", () => shuffleBtn.classList.toggle("active"));
 playListBtn.addEventListener("click", () => playList.classList.toggle("active"));
 volumeBtn.addEventListener("click", () => volumeSlider.style.visibility="visible");
 volumeSlider.addEventListener('mousemove', setvolume);
 volumeSlider.addEventListener('mouseleave', (e) => volumeSlider.style.visibility="hidden");
 song.addEventListener("timeupdate", setSongProgress);
-// playListBtn.addEventListener("click",addPlayList);
 
+// my functions
 addPlayList();
-
-
-/**************************************************
-  function on button to trigger the player event and toggle btw play/pause icons
- **************************************************/
 
 function playBtnfun(){
 	if(song.paused){
-			playAndPauseBtnToggle.getAttribute('src');
-			playAndPauseBtnToggle.setAttribute("src","icons/pause.png");
-      		playingIndicator();
-			song.play();
+		playBtn.childNodes[0].getAttribute('class');
+		playBtn.childNodes[0].setAttribute("class","fas fa-pause fa-3x");
+		song.src = songs[currentSong].src;
+		songtitle.innerHTML = songs[currentSong].name;
+      	playingIndicator();
+		song.play();
 		
 		
 	}else{
-			song.pause();
-			noIndicator();
-			playAndPauseBtnToggle.getAttribute('src');
-			playAndPauseBtnToggle.setAttribute("src","icons/play.png");
+		song.pause();
+		noIndicator();
+		playBtn.childNodes[0].getAttribute('class');
+		playBtn.childNodes[0].setAttribute("class","fas fa-play fa-3x");
 		}
 }
 
-	// function shuffleMusic(){
-	// 	song.src = songs[Math.floor(Math.random() * songs.length)].src;
-	// 	song.play();
-	//   }
-
-function loopBtnFun(){
-loopBtn.getAttribute("class");
-loopBtn.setAttribute("class", "active-now shuffle");
-	
+function shuffleMusic(){
+	currentSong = Math.floor(Math.random() * songs.length  -1 + 1);
+	//song.play();
+	song.src = songs[currentSong].src
 }
-
-	  function inactive(){
-		loopBtn.getAttribute("class");
-		loopBtn.setAttribute("class", "shuffle");
-	  }
+shuffleMusic();
 
 function nextBtnfun(){ 
 		currentSong++;
@@ -148,53 +162,56 @@ function noIndicator(){
 
 }
 function setvolume() {
-	let volume = document.getElementById('volume')
 	song.volume = volumeSlider.value / 100;
 		if(song.volume === 0){
+			volumeBtn.childNodes[0].getAttribute("class")
+			volumeBtn.childNodes[0].setAttribute("class", "fas fa-volume-mute fa-2x")
 			
-			volume.getAttribute("src")
-			volume.setAttribute("src", "icons/volume-muted.png")
-
-
 		} else{
-			volume.getAttribute("src")
-			volume.setAttribute("src", "icons/volume.png")
-		
-	}
+			volumeBtn.childNodes[0].getAttribute("class")
+			volumeBtn.childNodes[0].setAttribute("class", "fas fa-volume-up fa-2x")
+		}
 
   }
-
 
 function setSongProgress(){
-	let progress = song.currentTime / song.duration;
-	if(progress >0){
+	let progress = song.currentTime / song.duration * 100;
+	// if(progress < 0){
 		seekSlider.value = progress;
-	}
+		//console.log(seekSlider.value)
+		//console.log(progress)
+	// }
 
   }
-const seekSlider = document.getElementById('seeker');
-let seeking = false;
 
+let seeking = false;
  seekSlider.addEventListener("mousedown", (event) =>{seeking = true; seek(event)});
- seekSlider.addEventListener("mousemove", (event) =>{ seek(event) });
+	seekSlider.addEventListener("mousemove", (event) =>{ seek(event) });
  seekSlider.addEventListener("mouseup", ()=> seeking = false);
 
-  function seek(event) {
+function seek(event) {
 	if (seeking) {
-		seekSlider.value = event.clientX - seekSlider.offsetLeft;
+		 seekSlider.value = event.clientX - seekSlider.offsetLeft ;
 		seekTo = song.duration * (seekSlider.value / 100);
 		song.currentTime = seekTo;
 	} 
-	song.play();
+	//song.play();
   }
 
-function addPlayList() {
+function addPlayList(){
 	for (let i = 0; i < songs.length; i++) {
-	  let item = document.createElement("li");
-	  item.innerHTML = songs[i].name;
-	  playList.appendChild(item);
+	let item = document.createElement("li");
+	item.innerHTML = `${songs[i].artist} - ${songs[i].name}`;
+	playList.appendChild(item)
+	
+	
+	item.addEventListener('click', (e) => {
+		song.src = songs[i].src;
+		songtitle.innerHTML = songs[i].name;
+		playBtn.childNodes[0].getAttribute('class');
+		playBtn.childNodes[0].setAttribute("class","fas fa-pause fa-3x");
+		playingIndicator();
+		song.play();
+	})
 	}
 }
-playList.onclick = (event)=>{
-	console.log(event) //why is this not working??
-};
