@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music player</title>
-    <link rel="stylesheet" href="player.css">
-    <script defer src="player.js"></script>
-    
+    <title>Music player</title> 
+        
+    <link rel="stylesheet" media="all" type="text/css" href="FontAwesome/fontawesome-free-5.13.1-web/css/all.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/e3e21a4bac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="player.css"> 
+   
 </head>
 
-<body onload="playMusic()">
+<body>
     <div class="container">
         <div class="header"></div>
               <div class="forborder" >
                   <img src=" " alt="" width="150px" id="poster-shadow">
               </div>
       <p class="title">
-        <marquee scrolldelay="300"> </marquee>
+        <marquee scrolldelay="100"> </marquee>
       </p> 
 
         <div class="controls">
@@ -29,20 +32,21 @@
 
           <input id="seeker" type="range" min="0" max="100" value="0" step="1">
         
+                                            <!-- <i class="fas fa-pause"></i> -->
+                                    
+            <button class="play-list-btn"><i class="fas fa-list fa-2x" ></i></button> 
+            <button class="shuffle"><i class="fas fa-random fa-2x"></i></button>
+            <button class="decorate previous"><i class="fas fa-fast-backward fa-2x"></i></button>
+            <button class="big "><i class="fas fa-play fa-3x"></i></button>
+            <button class="decorate next"><i class="fas fa-fast-forward fa-2x"></i></button>
+            <button class="loop"><i class="fas fa-redo-alt fa-2x"></i></button>
+            <button class="volume-btn"><i class="fas fa-volume-up fa-2x"></i></button>
+                                        <!-- <i class="fas fa-volume-mute"></i>-->
           
-            <button class="play-list-btn"><img src="icons/play-list.png" width="20px"></button>
-            <button class="shuffle"><img src="icons/shuffle.png" width="25px"></button>
-            <button class="decorate previous"><img src="icons/previous.png" alt="" width="25px"></button>
-            <button class="big "><img src="icons/pause.png" id="toggle" alt="" width="35px"></button>
-            <button class="decorate next"><img src="icons/next.png" alt="" width="25px"></button>
-            <button class="loop"><img src="icons/loop.png" alt="" width="25px"></button>
-            <button class="volume-btn"><img src="icons/volume.png" width="20px" id="volume"></button>
-
             <div class="vol-container"></div>
               <div id="range-number"></div>
               <input type="range" min="0" max="100" value="100" step="1" id="slider">
             </div>
-
             
       </div>
 
@@ -56,9 +60,10 @@
     
   </ul>
 
-
+  <div class="tryout"></div>
 
 </body>
+<script src="player.js"></script>
     
 
 </html>
