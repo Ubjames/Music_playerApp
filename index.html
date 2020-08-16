@@ -9,59 +9,59 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e3e21a4bac.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="player.css"> 
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
    
 </head>
 
 <body>
-    <div class="container">
-        <div class="header"></div>
-              <div class="forborder" >
+    <div class="player">
+          <div class="container">
+              <div class="header"></div>
+                    <div class="forborder" >
+                    
+                    </div>
+            <p class="title">
+              <marquee scrolldelay="200" hspace="10px" width="100%" behavior="scroll"> </marquee>
+            </p> 
+
+              <div class="controls">
+
+                <div id="seeker">
+                  <div class="fill-bar"></div>
+                  <div class="thumb"></div>
+                </div> 
+              <!-- <div class="seeker-bar">
+                  <div id="filler"></div>
+                <input id="seeker" type="range" min="0" max="100" value="0" step="1">
+              </div>-->
               
-              </div>
-      <p class="title">
-        <marquee scrolldelay="100"> </marquee>
-      </p> 
-
-        <div class="controls">
-
-           <div id="seeker">
-            <div class="fill-bar"></div>
-            <div class="thumb"></div>
-          </div> 
-         <!-- <div class="seeker-bar">
-            <div id="filler"></div>
-          <input id="seeker" type="range" min="0" max="100" value="0" step="1">
-        </div>-->
-        
-                                            <!-- <i class="fas fa-pause"></i> -->
-                                    
-            <button class="play-list-btn"><i class="fas fa-list fa-2x" ></i></button> 
-            <button class="shuffle"><i class="fas fa-random fa-2x"></i></button>
-            <button class="decorate previous"><i class="fas fa-fast-backward fa-2x"></i></button>
-            <button class="big "><i class="fas fa-play fa-3x"></i></button>
-            <button class="decorate next"><i class="fas fa-fast-forward fa-2x"></i></button>
-            <button class="loop"><i class="fas fa-redo-alt fa-2x"></i></button>
-            <button class="volume-btn"><i class="fas fa-volume-up fa-2x"></i></button>
-                                        <!-- <i class="fas fa-volume-mute"></i>-->
-          
-            <div class="vol-container"></div>
-              <div id="range-number"></div>
-              <input type="range" min="0" max="100" value="100" step="1" id="slider">
+                                                  <!-- <i class="fas fa-pause"></i> -->
+                                          
+                  <button class="play-list-btn"><i class="fas fa-list fa-2x" ></i></button> 
+                  <button class="shuffle"><i class="fas fa-random fa-2x"></i></button>
+                  <button class="decorate previous"><i class="fas fa-fast-backward fa-2x"></i></button>
+                  <button class="big "><i class="fas fa-play fa-3x"></i></button>
+                  <button class="decorate next"><i class="fas fa-fast-forward fa-2x"></i></button>
+                  <button class="loop"><i class="fas fa-redo-alt fa-2x"></i></button>
+                  <button class="volume-btn"><i class="fas fa-volume-up fa-2x"></i></button>
+                                              <!-- <i class="fas fa-volume-mute"></i>-->
+                
+                  <div class="vol-container"></div>
+                    <div id="range-number"></div>
+                    <input type="range" min="0" max="100" value="100" step="1" id="slider">
+                  </div>
+                  
             </div>
-            
+
+          
+          </div>
+        
+          <div class="list-wrapper">
+        <ul id="playlist" class=""></ul>
       </div>
 
-    
     </div>
   
-    
-  </div>
-
-  <ul id="playlist" class="">
-    
-  </ul>
-
-  <div class="tryout"></div>
 
 </body>
 <script src="player.js"></script>
