@@ -43,8 +43,15 @@ body {
 marquee {
   width: 100%;
   text-shadow: 0 0 5px black;
+  text-align: center;
+  margin-left: -1em;
 }
 
+@media only screen and (max-width: 350px) {
+  marquee {
+    width: 50%;
+  }
+}
 .controls {
   position: relative;
   display: flex;
@@ -113,12 +120,11 @@ button:focus {
   font-family: "century gothic";
   color: #fff;
   font-weight: 500;
-  margin-left: 160px;
   margin-top: 50px;
   font-size: 1.1em;
+  width: 100%;
 }
 #poster-shadow {
-  /*    margin-top: -6em;*/
   box-shadow: 1px -1px 10px;
 }
 
@@ -242,8 +248,7 @@ input[type="range"]#slider {
   transform: rotate(-90deg);
 }
 
-@media screen and (max-width:350px)
-{
+@media screen and (max-width: 350px) {
   input[type="range"]#slider {
     position: absolute;
     width: 17%;
@@ -259,7 +264,6 @@ input[type="range"]#slider {
     cursor: pointer;
     transform: rotate(-180deg);
   }
-
 }
 /* for chrome browser */
 
@@ -283,17 +287,16 @@ input[type="range"]::-webkit-slider-thumb {
   height: 9px;
   top: -1em;
 }
-@media screen and (max-width: 350px){
-#seeker{
-   position: absolute;
-  background-color: #c5c5d8;
-  box-shadow: inset 1px 1px 1.5px #000, inset -1px -1px 1.5px #fff;
-  border-radius: 50px;
-  width: 230px;
-  height: 9px;
-  top: -1em;
-}
-
+@media screen and (max-width: 350px) {
+  #seeker {
+    position: absolute;
+    background-color: #c5c5d8;
+    box-shadow: inset 1px 1px 1.5px #000, inset -1px -1px 1.5px #fff;
+    border-radius: 50px;
+    width: 230px;
+    height: 9px;
+    top: -1em;
+  }
 }
 
 #seeker:focus {
